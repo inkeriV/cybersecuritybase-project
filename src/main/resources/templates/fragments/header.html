@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Header</title>
+    </head>
+    <body>
+
+        <header th:fragment="header">
+            <a th:href="login">log in</a>
+            <p></p>
+            <a th:href="@{/search}">See your sign up</a>
+        </header>
+
+    </body>
+</html>

@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Show guest info</title>
+    </head>
+    <body>
+        <div th:each="guest : ${guest}">
+            <a th:text=" 'Name: ' + ${guest.name}"></a> &nbsp;
+            <a th:text=" 'Number: ' + ${guest.number}"></a> &nbsp;
+            <a th:text=" 'Email: ' + ${guest.email}"></a> &nbsp;
+            <p></p>
+        </div>
+        
+    </body>
+</html>

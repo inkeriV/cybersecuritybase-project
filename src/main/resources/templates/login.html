@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Login</title>
+    </head>
+    <body>
+        
+        <header th:replace="fragments/header :: header">
+            <p>header</p>
+        </header>
+
+        <h1>For admins only.</h1>
+
+        <form action="#" th:action="@{/login}" method="POST">
+            <p><label for="username">Username</label>: <input type="text" name="username" id="username"/></p>
+            <p><label for="password">Password</label>: <input type="text" name="password" id="password"/></p>
+            <p><input type="submit" value="Submit" /></p>
+        </form>
+
+        <p></p>
+    </body>
+</html>
+
