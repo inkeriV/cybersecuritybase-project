@@ -18,7 +18,11 @@ For trying the app, the user credentials for guest and admin are
 
 **Description**: Attacker can perform a sql injection attack in the search bar that is for the guest to search their own username and see their information. For example, if an attacker writes:```' or 1='1``` in the search bar, they can see all the guests that have signed up for the party and their data. Now the app uses Java Persistence to map java objects to database and the other way round. Java persistence has a entity manager that can create queries that are injectable. The queries are like: ```"select * from Guest where username = '" + username + "'"``` and therefore whatever can be passed as a username string and it is put into the query.
 
-**How to fix**: To do the same job safely the app should implement a JPA repository. The Guest class should extend a AbstractPersistable superclass: ```public class Guest extends AbstractPersistable<Long> {...}```. And the new interface GuestRepository should extend the JpaRepository interface: ```public interface GuestRepository extends JpaRepository<Guest, Long> {...}```. Now we could create a guestRepository in the controller with an annotation: ```@Autowired private GuestRepository guestRepository;```. JPA repository has already some functions like ```findAll()``` but we could create a custom query in the interface like this: ```@Query("select g from Guest g where g.username = :name") Guest findByUsername(@Param("name") String name);```. 
+**How to fix**: To do the same job safely the app should implement a JPA repository. The Guest class should extend a AbstractPersistable superclass: ```public class Guest extends AbstractPersistable<Long> {...}```. And the new interface GuestRepository should extend the JpaRepository interface: ```public interface GuestRepository extends JpaRepository<Guest, Long> {...}```. Now we could create a guestRepository in the controller with an annotation: ```@Autowired private GuestRepository guestRepository;```. JPA repository has already some functions like ```findAll()``` but we could create a custom query in the interface like this: 
+```
+@Query("select g from Guest g where g.username = :name") 
+Guest findByUsername(@Param("name") String name);
+```
 
 
 ## FLAW 3: Cross-Site Scripting (XSS)
