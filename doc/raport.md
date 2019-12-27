@@ -46,6 +46,9 @@ public class Guest extends AbstractPersistable<Long> {
     private String username;
     @SafeHtml
     private String name;
+    
+    ...
+}    
 ```  
 And for the submitForm function in SignupController, though ```@Valid``` cannot be used ```@RequestParam```, we could bind our parameters into the Guest object so we would have the following:  
 ```
